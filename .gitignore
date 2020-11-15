@@ -1,0 +1,9 @@
+*.tmp
+
+/build
+/.gradle
+
+.DS_Store
+
+
+/viikko3/WebLogin/salasanat.txt 
