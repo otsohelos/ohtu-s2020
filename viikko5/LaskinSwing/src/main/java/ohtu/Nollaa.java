@@ -20,6 +20,7 @@ public class Nollaa extends Komento {
         tuloskentta.setText("");
         syotekentta.setText("");
         nollaa.setEnabled(false);
+        undo.setEnabled(false);
     }
 
     @Override
