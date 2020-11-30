@@ -10,22 +10,31 @@ import javax.swing.JTextField;
 
 public class Nollaa extends Komento {
 
+    private int vanhaArvo = 0;
+
     public Nollaa(JTextField tuloskentta, JTextField syotekentta, JButton nollaa, JButton undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
     }
 
-
     public void suorita() {
+        vanhaArvo = sovellus.tulos();
         sovellus.nollaa();
         tuloskentta.setText("");
         syotekentta.setText("");
         nollaa.setEnabled(false);
-        undo.setEnabled(false);
+        undo.setEnabled(true);
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sovellus.plus(vanhaArvo);
+        int tulos = sovellus.tulos();
+        tuloskentta.setText(String.valueOf(tulos));
+        syotekentta.setText("");
+
+        nollaa.setEnabled(false);
+        undo.setEnabled(false);
+        syotekentta.requestFocusInWindow();
     }
 
 }

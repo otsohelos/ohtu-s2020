@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 public class Erotus extends Komento {
 
     protected int arvo = 0;
+    private int vanhaArvo = 0;
 
     public Erotus(JTextField tuloskentta, JTextField syotekentta, JButton nollaa, JButton undo, Sovelluslogiikka sovellus) {
         super(tuloskentta, syotekentta, nollaa, undo, sovellus);
@@ -31,12 +32,25 @@ public class Erotus extends Komento {
         } else {
             nollaa.setEnabled(false);
         }
+        undo.setEnabled(true);
+        vanhaArvo = arvo;
         arvo = 0;
+        syotekentta.requestFocusInWindow();
     }
 
     @Override
     public void peru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sovellus.plus(vanhaArvo);
+        int tulos = sovellus.tulos();
+        tuloskentta.setText(String.valueOf(tulos));
+        syotekentta.setText("");
+        if (tulos != 0) {
+            nollaa.setEnabled(true);
+        } else {
+            nollaa.setEnabled(false);
+        }
+        undo.setEnabled(false);
+        syotekentta.requestFocusInWindow();
     }
 
 }
