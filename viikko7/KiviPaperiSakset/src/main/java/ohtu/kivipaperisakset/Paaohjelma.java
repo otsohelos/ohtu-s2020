@@ -10,7 +10,7 @@ public class Paaohjelma {
   private static Pelitehdas pelitehdas = new Pelitehdas();
 
   public static void main(String[] args) {
-    // boolean jatketaan = true;
+
     KPS kps = pelitehdas.luo("a");
 
     while (kps != null) {
@@ -23,17 +23,12 @@ public class Paaohjelma {
       if (vastaus.length() > 0) {
         valintamerkki = vastaus.substring(vastaus.length() - 1);
       }
-      tulostaPeliohje();
       kps = pelitehdas.luo(valintamerkki);
       if (kps != null) {
+        System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
         kps.pelaa();
       }
     }
-  }
-
-  private static void tulostaPeliohje() {
-    System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
-
   }
 
 }

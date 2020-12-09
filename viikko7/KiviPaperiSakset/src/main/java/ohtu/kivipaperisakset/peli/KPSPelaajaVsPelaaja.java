@@ -8,7 +8,7 @@ public class KPSPelaajaVsPelaaja extends KPS {
 
   @Override
   protected String toisenSiirto() {
-    System.out.println("Toisen pelaajan siirto: ");
+    System.out.print("Toisen pelaajan siirto: ");
     return scanner.nextLine();
   }
 }

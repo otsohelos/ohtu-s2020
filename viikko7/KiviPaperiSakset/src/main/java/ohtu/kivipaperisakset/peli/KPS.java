@@ -20,7 +20,9 @@ public abstract class KPS {
       System.out.println(tuomari);
       System.out.println();
       ekanSiirto = ensimmaisenSiirto();
-      tokanSiirto = toisenSiirto();
+      if (onkoOkSiirto(ekanSiirto)) {
+        tokanSiirto = toisenSiirto();
+      }
     }
 
     System.out.println();
@@ -37,7 +39,7 @@ public abstract class KPS {
   abstract protected String toisenSiirto();
 
   protected static boolean onkoOkSiirto(String siirto) {
-    return "k".equals(siirto) || "p".equals(siirto) || "s".equals(siirto);
+    return siirto.matches("[kps]");
   }
 
 }
