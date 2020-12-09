@@ -1,6 +1,8 @@
-package ohtu.kivipaperisakset;
+package ohtu.kivipaperisakset.peli;
 
 import java.util.Scanner;
+
+import ohtu.kivipaperisakset.Tuomari;
 
 public abstract class KPS {
   private static final Scanner scanner = new Scanner(System.in);

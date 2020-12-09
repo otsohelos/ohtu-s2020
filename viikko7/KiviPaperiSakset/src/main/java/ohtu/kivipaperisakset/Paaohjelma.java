@@ -2,14 +2,18 @@ package ohtu.kivipaperisakset;
 
 import java.util.Scanner;
 
+import ohtu.kivipaperisakset.peli.KPS;
+
 public class Paaohjelma {
 
   private static final Scanner scanner = new Scanner(System.in);
+  private static Pelitehdas pelitehdas = new Pelitehdas();
 
   public static void main(String[] args) {
-    boolean jatketaan = true;
+    // boolean jatketaan = true;
+    KPS kps = pelitehdas.luo("a");
 
-    while (jatketaan) {
+    while (kps != null) {
       System.out.println("\nValitse pelataanko" + "\n (a) ihmistä vastaan " + "\n (b) tekoälyä vastaan"
           + "\n (c) parannettua tekoälyä vastaan" + "\nmuilla valinnoilla lopetataan");
 
@@ -19,31 +23,12 @@ public class Paaohjelma {
       if (vastaus.length() > 0) {
         valintamerkki = vastaus.substring(vastaus.length() - 1);
       }
-      jatketaan = pelaa(valintamerkki);
+      tulostaPeliohje();
+      kps = pelitehdas.luo(valintamerkki);
+      if (kps != null) {
+        kps.pelaa();
+      }
     }
-  }
-
-  private static Boolean pelaa(String merkki) {
-    switch (merkki) {
-      case "a":
-        tulostaPeliohje();
-        KPSPelaajaVsPelaaja kaksinpeli = new KPSPelaajaVsPelaaja();
-        kaksinpeli.pelaa();
-        return true;
-      case "b":
-        tulostaPeliohje();
-        KPSTekoaly yksinpeli = new KPSTekoaly();
-        yksinpeli.pelaa();
-        return true;
-      case "c":
-        tulostaPeliohje();
-        KPSParempiTekoaly pahaYksinpeli = new KPSParempiTekoaly();
-        pahaYksinpeli.pelaa();
-        return true;
-      default:
-        return false;
-    }
-
   }
 
   private static void tulostaPeliohje() {
